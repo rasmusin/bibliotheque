@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="com.bibliotheque.controller.MainController">
+	<top>
+		<MenuBar>
+			<menus>
+				<Menu text="Fichier">
+					<items>
+						<MenuItem text="Rafraîchir" onAction="#handleRefresh" />
+						<SeparatorMenuItem />
+						<MenuItem text="Quitter" onAction="#handleQuit" />
+					</items>
+				</Menu>
+				<Menu text="Aide">
+					<items>
+						<MenuItem text="À propos" onAction="#handleAbout" />
+					</items>
+				</Menu>
+			</menus>
+		</MenuBar>
+	</top>
+
+	<center>
+		<TabPane>
+			<tabs>
+				<Tab text="Livres">
+					<content>
+						<VBox spacing="8.0" padding="10.0">
+							<HBox spacing="8.0">
+								<TextField fx:id="rechercheField" promptText="Rechercher un livre..." />
+								<Button text="Rechercher" onAction="#handleRechercheLivre" />
+								<Button text="Tous" onAction="#handleAfficherTousLivres" />
+								<Region HBox.hgrow="ALWAYS" />
+								<Button text="Ajouter" onAction="#handleAjouterLivre" />
+								<Button text="Modifier" onAction="#handleModifierLivre" />
+								<Button text="Supprimer" onAction="#handleSupprimerLivre" />
+							</HBox>
+
+							<TableView fx:id="livresTable" prefHeight="400.0">
+								<columns>
+									<TableColumn fx:id="isbnColumn" text="ISBN" />
+									<TableColumn fx:id="titreColumn" text="Titre" />
+									<TableColumn fx:id="auteurColumn" text="Auteur" />
+									<TableColumn fx:id="anneeColumn" text="Année" />
+									<TableColumn fx:id="prixColumn" text="Prix" />
+									<TableColumn fx:id="disponibleColumn" text="Disponible" />
+								</columns>
+							</TableView>
+						</VBox>
+					</content>
+				</Tab>
+
+				<Tab text="Membres">
+					<content>
+						<VBox spacing="8.0" padding="10.0">
+							<HBox spacing="8.0">
+								<TextField fx:id="rechercheMembreField" promptText="Rechercher un membre..." />
+								<Button text="Rechercher" onAction="#handleRefresh" />
+								<CheckBox fx:id="actifsSeulementCheck" text="Actifs seulement" />
+								<Region HBox.hgrow="ALWAYS" />
+							</HBox>
+
+							<TableView fx:id="membresTable" prefHeight="400.0">
+								<columns>
+									<TableColumn fx:id="idMembreColumn" text="ID" />
+									<TableColumn fx:id="nomMembreColumn" text="Nom" />
+									<TableColumn fx:id="prenomMembreColumn" text="Prénom" />
+									<TableColumn fx:id="emailColumn" text="Email" />
+									<TableColumn fx:id="inscriptionColumn" text="Inscription" />
+									<TableColumn fx:id="actifColumn" text="Actif" />
+								</columns>
+							</TableView>
+						</VBox>
+					</content>
+				</Tab>
+
+				<Tab text="Emprunts">
+					<content>
+						<VBox spacing="8.0" padding="10.0">
+							<HBox spacing="8.0">
+								<TextField fx:id="isbnEmpruntField" promptText="ISBN" />
+								<TextField fx:id="membreIdField" promptText="ID Membre" />
+								<Button text="Emprunter" onAction="#handleEmprunter" />
+								<Button text="Retourner" onAction="#handleRetourner" />
+								<Region HBox.hgrow="ALWAYS" />
+							</HBox>
+
+							<TableView fx:id="empruntsTable" prefHeight="400.0">
+								<columns>
+									<TableColumn fx:id="idEmpruntColumn" text="ID" />
+									<TableColumn fx:id="livreEmpruntColumn" text="Livre" />
+									<TableColumn fx:id="membreEmpruntColumn" text="Membre" />
+									<TableColumn fx:id="dateEmpruntColumn" text="Date emprunt" />
+									<TableColumn fx:id="dateRetourPrevueColumn" text="Retour prévu" />
+									<TableColumn fx:id="dateRetourEffectiveColumn" text="Retour effectif" />
+									<TableColumn fx:id="penaliteColumn" text="Pénalité" />
+								</columns>
+							</TableView>
+						</VBox>
+					</content>
+				</Tab>
+			</tabs>
+		</TabPane>
+	</center>
+
+	<bottom>
+		<HBox spacing="10.0" padding="8.0">
+			<Label fx:id="statusLabel" text="Prêt" />
+			<Region HBox.hgrow="ALWAYS" />
+			<Label fx:id="statsLabel" text="0 livres | 0 membres | 0 emprunts" />
+		</HBox>
+	</bottom>
+</BorderPane>

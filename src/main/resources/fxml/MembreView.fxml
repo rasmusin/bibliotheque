@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="com.bibliotheque.controller.MembreController" spacing="8.0" padding="10.0">
+    <HBox spacing="8.0">
+        <TextField fx:id="rechercheMembreField" promptText="Rechercher un membre..." />
+        <Button fx:id="btnRechercherMembre" text="Rechercher" onAction="#handleRechercherMembre" />
+        <Button fx:id="btnTousLesMembres" text="Tous" onAction="#chargerTousLesMembres" />
+        <CheckBox fx:id="actifsSeulementCheck" text="Actifs seulement" />
+        <Region HBox.hgrow="ALWAYS" />
+        <Button fx:id="btnNouveauMembre" text="Nouveau" onAction="#handleNouveauMembre" />
+        <Button fx:id="btnModifierMembre" text="Modifier" onAction="#handleModifierMembre" />
+        <Button fx:id="btnSupprimerMembre" text="Supprimer" onAction="#handleSupprimerMembre" />
+        <Button fx:id="btnActiverDesactiver" text="Activer/Désactiver" onAction="#handleActiverDesactiver" />
+        <Button fx:id="btnVoirHistorique" text="Historique" onAction="#handleVoirHistorique" />
+        <Button fx:id="btnDetailsMembre" text="Détails" onAction="#handleDetailsMembre" />
+    </HBox>
+
+    <TableView fx:id="membresTable" prefHeight="400.0">
+        <columns>
+            <TableColumn fx:id="idMembreColumn" text="ID" />
+            <TableColumn fx:id="nomMembreColumn" text="Nom" />
+            <TableColumn fx:id="prenomMembreColumn" text="Prénom" />
+            <TableColumn fx:id="emailColumn" text="Email" />
+            <TableColumn fx:id="inscriptionColumn" text="Inscription" />
+            <TableColumn fx:id="actifColumn" text="Actif" />
+            <TableColumn fx:id="nbEmpruntsColumn" text="Emprunts" />
+        </columns>
+    </TableView>
+
+    <HBox spacing="12.0">
+        <Label fx:id="lblTotalMembres" text="Total: 0" />
+        <Label fx:id="lblMembresActifs" text="Actifs: 0" />
+        <Label fx:id="lblMembresInactifs" text="Inactifs: 0" />
+        <Label fx:id="lblEmpruntsEnCours" text="Emprunts en cours: 0" />
+    </HBox>
+</VBox>

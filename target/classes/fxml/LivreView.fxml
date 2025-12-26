@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="com.bibliotheque.controller.LivreController" spacing="8.0" padding="10.0">
+    <HBox spacing="8.0">
+        <TextField fx:id="rechercheField" promptText="Rechercher..." />
+        <ComboBox fx:id="critereRechercheCombo" prefWidth="120.0" />
+        <Button fx:id="btnRechercher" text="Rechercher" onAction="#handleRechercher" />
+        <Button fx:id="btnTousLesLivres" text="Tous" onAction="#chargerTousLesLivres" />
+        <Region HBox.hgrow="ALWAYS" />
+        <Button fx:id="btnAjouter" text="Ajouter" onAction="#handleAjouter" />
+        <Button fx:id="btnModifier" text="Modifier" onAction="#handleModifier" />
+        <Button fx:id="btnSupprimer" text="Supprimer" onAction="#handleSupprimer" />
+        <Button fx:id="btnDetails" text="Détails" />
+    </HBox>
+
+    <TableView fx:id="livresTable" prefHeight="400.0">
+        <columns>
+            <TableColumn fx:id="isbnColumn" text="ISBN" />
+            <TableColumn fx:id="titreColumn" text="Titre" />
+            <TableColumn fx:id="auteurColumn" text="Auteur" />
+            <TableColumn fx:id="anneeColumn" text="Année" />
+            <TableColumn fx:id="prixColumn" text="Prix" />
+            <TableColumn fx:id="disponibleColumn" text="Disponible" />
+            <TableColumn fx:id="dateCreationColumn" text="Créé le" />
+        </columns>
+    </TableView>
+
+    <HBox spacing="12.0">
+        <Label fx:id="lblTotalLivres" text="Total: 0" />
+        <Label fx:id="lblLivresDisponibles" text="Disponibles: 0" />
+        <Label fx:id="lblLivresEmpruntes" text="Empruntés: 0" />
+    </HBox>
+</VBox>

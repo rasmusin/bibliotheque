@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="com.bibliotheque.controller.MainController">
+    <top>
+        <MenuBar>
+            <Menu text="Fichier">
+                <MenuItem text="Quitter" onAction="#handleQuit"/>
+            </Menu>
+            <Menu text="Aide">
+                <MenuItem text="À propos" onAction="#handleAbout"/>
+            </Menu>
+        </MenuBar>
+    </top>
+    
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE" style="-fx-font-size: 12;">
+            <Tab text="📚 Livres" closable="false">
+                <VBox spacing="8" style="-fx-padding: 10;">
+                    <HBox spacing="8">
+                        <TextField fx:id="rechercheField" promptText="Rechercher..." HBox.hgrow="ALWAYS"/>
+                        <Button text="Rechercher" onAction="#handleRechercheLivre"/>
+                        <Button text="Nouveau" onAction="#handleAjouterLivre"/>
+                    </HBox>
+                    <TableView fx:id="livresTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="isbnColumn" text="ISBN" prefWidth="100"/>
+                            <TableColumn fx:id="titreColumn" text="Titre" prefWidth="200"/>
+                            <TableColumn fx:id="auteurColumn" text="Auteur" prefWidth="150"/>
+                            <TableColumn fx:id="anneeColumn" text="Année" prefWidth="80"/>
+                            <TableColumn fx:id="dateCreationColumn" text="Créé le" prefWidth="140"/>
+                            <TableColumn fx:id="prixColumn" text="Prix" prefWidth="80"/>
+                            <TableColumn fx:id="disponibleColumn" text="Disponible" prefWidth="100"/>
+                        </columns>
+                    </TableView>
+                    <Label fx:id="statsLabel" text=""/>
+                </VBox>
+            </Tab>
+            
+            <Tab text="👥 Membres" closable="false">
+                <VBox spacing="8" style="-fx-padding: 10;">
+                    <HBox spacing="8">
+                        <TextField fx:id="rechercheMembreField" promptText="Rechercher membre..." HBox.hgrow="ALWAYS"/>
+                        <Button text="Rechercher" onAction="#handleRechercherMembre"/>
+                        <Button text="Nouveau" onAction="#handleAjouterMembre"/>
+                        <CheckBox fx:id="actifsSeulementCheck" text="Actifs seulement"/>
+                    </HBox>
+                    <TableView fx:id="membresTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="idMembreColumn" text="ID" prefWidth="50"/>
+                            <TableColumn fx:id="nomMembreColumn" text="Nom" prefWidth="120"/>
+                            <TableColumn fx:id="prenomMembreColumn" text="Prénom" prefWidth="120"/>
+                            <TableColumn fx:id="emailColumn" text="Email" prefWidth="180"/>
+                            <TableColumn fx:id="inscriptionColumn" text="Inscription" prefWidth="100"/>
+                            <TableColumn fx:id="actifColumn" text="Statut" prefWidth="100"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+            
+            <Tab text="📋 Emprunts" closable="false">
+                <VBox spacing="8" style="-fx-padding: 10;">
+                    <HBox spacing="8">
+                        <TextField fx:id="isbnEmpruntField" promptText="ISBN..." prefWidth="100"/>
+                        <TextField fx:id="membreIdField" promptText="ID Membre..." prefWidth="100"/>
+                        <Button text="Emprunter" onAction="#handleEmprunter"/>
+                    </HBox>
+                    <TableView fx:id="empruntsTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="idEmpruntColumn" text="ID" prefWidth="50"/>
+                            <TableColumn fx:id="livreEmpruntColumn" text="Livre" prefWidth="200"/>
+                            <TableColumn fx:id="membreEmpruntColumn" text="Membre" prefWidth="150"/>
+                            <TableColumn fx:id="dateEmpruntColumn" text="Date Emprunt" prefWidth="100"/>
+                            <TableColumn fx:id="dateRetourPrevueColumn" text="Retour Prévu" prefWidth="100"/>
+                            <TableColumn fx:id="dateRetourEffectiveColumn" text="Retour Effectif" prefWidth="100"/>
+                            <TableColumn fx:id="penaliteColumn" text="Pénalité" prefWidth="80"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+        </TabPane>
+    </center>
+    
+    <bottom>
+        <HBox spacing="10" style="-fx-background-color: #f0f0f0; -fx-padding: 10;">
+            <Label fx:id="statusLabel" text="Prêt" style="-fx-font-size: 11;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="versionLabel" text="v1.0" style="-fx-text-fill: #666; -fx-font-size: 10;"/>
+        </HBox>
+    </bottom>
+</BorderPane>
